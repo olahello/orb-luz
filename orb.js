@@ -34,7 +34,7 @@
     kFixo: null,      // conferência, força a geometria (0 bola, 1 tela)
     aneis: false,     // os dois contornos do off+brand, a 1,2 e 0,9 do diâmetro, desligados por padrão (README §6 item 11)
     medir: false,     // conferência, guarda o tempo de cada quadro
-    opcaoPadrao: 2,   // opção do storyboard no desktop, 2 aprovada em 27/10/2026 (decisão 148). ?opcao=1 ou ?opcao=2 vencem este padrão
+    opcaoPadrao: 1,   // opção do storyboard no desktop, 1 escolhida pelo Rodrigo em 27/10/2026 (decisão 153), no lugar da 2 (decisão 148). ?opcao=1 ou ?opcao=2 vencem este padrão
     ponto: null,      // gradiente do ponto do logo no nascimento, {stops: [hex...], vertical}. Nulo é o oficial, Heat Red a Fuchsia na horizontal
     estadoFixo: null  // conferência, força posição e tamanho da bola {x, y, D, alfa, nasce}
   };
@@ -48,7 +48,7 @@
     desktop: { pino: 1.8, fim: 3.368,
       passos: [['canto1', 1.386, 1.800, 'power2.inOut'], ['canto2', 1.800, 2.800, 'power2.inOut'], ['sai', 2.800, 3.368, 'power1.out']],
       alvos: { canto1: [25, 18, 1], canto2: [40, -36, 0.5], sai: [60, -62, 0] } },
-    // opção 1 do storyboard no desktop, tudo dentro da abertura, para comparar (?opcao=1). CANTOS ('1', 1280) do storyboard.py
+    // opção 1 do storyboard no desktop, tudo dentro da abertura, padrão desde a decisão 153. CANTOS ('1', 1280) do storyboard.py. A desktop acima é a opção 2 (?opcao=2)
     desktop1: { pino: 2.2, fim: 2.200,
       passos: [['canto1', 1.386, 1.760, 'power2.inOut'], ['canto2', 1.760, 2.046, 'power2.inOut'], ['sai', 2.046, 2.200, 'power1.out']],
       alvos: { canto1: [-25, 18, 1], canto2: [40, -36, 0.5], sai: [60, -62, 0] } },
@@ -585,7 +585,7 @@
     opcoes = opcoes || {};
     if (!MATERIAL) { console.warn('orb.js: material ausente'); return; }
     var $ = function (s) { return document.querySelector(s); };
-    // opção do storyboard, 2 por padrão (aprovada em 27/10/2026), 1 para comparar
+    // opção do storyboard, 1 por padrão (decisão 153), 2 para comparar com ?opcao=2
     var mo = location.search.match(/[?&]opcao=([12])/);
     var op = opcoes.opcao || (mo ? +mo[1] : P.opcaoPadrao);
     if (op === 1) { OPC.desktop2 = OPC.desktop2 || OPC.desktop; OPC.desktop = OPC.desktop1; }
